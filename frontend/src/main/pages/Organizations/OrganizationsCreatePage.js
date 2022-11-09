@@ -1,6 +1,6 @@
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
 
-export default function TodosCreatePage() {
+export default function OrganizationsCreatePage() {
   return (
     <BasicLayout>
       <div className="pt-2">
