@@ -1,6 +1,6 @@
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
 
-export default function TodosIndexPage() {
+export default function RecommendationsIndexPage() {
   return (
     <BasicLayout>
       <div className="pt-2">
@@ -12,3 +12,4 @@ export default function TodosIndexPage() {
     </BasicLayout>
   )
 }
+
