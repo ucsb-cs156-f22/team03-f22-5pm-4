@@ -4,7 +4,7 @@ export default function TodosIndexPage() {
   return (
     <BasicLayout>
       <div className="pt-2">
-        <h1>article index</h1>
+        <h1>articles index</h1>
         <p>
           This is where the index page will go
         </p>
