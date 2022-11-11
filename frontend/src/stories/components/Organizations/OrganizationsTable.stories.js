@@ -14,7 +14,7 @@ const Template = (args) => {
         <OrganizationsTable {...args} />
     )
 };
-
+//afn[eknFA]
 export const Empty = Template.bind({});
 
 Empty.args = {
