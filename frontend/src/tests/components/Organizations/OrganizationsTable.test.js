@@ -1,6 +1,6 @@
 import {  render } from "@testing-library/react";
 import { organizationsFixtures } from "fixtures/organizationsFixtures";
-import OrgaizationsTable from "main/components/Organizations/OrganizationsTable";
+import OrganizationsTable from "main/components/Organizations/OrganizationsTable";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import { currentUserFixtures } from "fixtures/currentUserFixtures";
