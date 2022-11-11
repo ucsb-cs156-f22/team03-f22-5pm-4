@@ -1,6 +1,6 @@
 import {  render } from "@testing-library/react";
-import { organizationsFixtures } from "fixtures/organizationsFixtures";
-import OrganizationsTable from "main/components/Organizations/OrganizationsTable";
+import { diningCommonsFixtures } from "fixtures/diningCommonsFixtures";
+import DiningCommonsTable from "main/components/DiningCommons/DiningCommonsTable";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import { currentUserFixtures } from "fixtures/currentUserFixtures";
@@ -13,7 +13,7 @@ jest.mock('react-router-dom', () => ({
     useNavigate: () => mockedNavigate
 }));
 
-describe("OrganizationsTable tests", () => {
+describe("DiningCommonsTable tests", () => {
   const queryClient = new QueryClient();
 
 
@@ -23,7 +23,7 @@ describe("OrganizationsTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <OrganizationsTable organizations={[]} currentUser={currentUser} />
+          <DiningCommonsTable diningCommons={[]} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 
@@ -35,7 +35,7 @@ describe("OrganizationsTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <OrganizationsTable organizations={[]} currentUser={currentUser} />
+          <DiningCommonsTable diningCommons={[]} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 
@@ -48,7 +48,7 @@ describe("OrganizationsTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <OrganizationsTable organizations={[]} currentUser={currentUser} />
+          <DiningCommonsTable diningCommons={[]} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 
@@ -62,31 +62,31 @@ describe("OrganizationsTable tests", () => {
     const { getByText, getByTestId } = render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <OrganizationsTable organizations={organizationsFixtures.threeOrganizations} currentUser={currentUser} />
+          <DiningCommonsTable diningCommons={diningCommonsFixtures.threeCommons} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 
     );
 
 
-    const expectedHeaders = ['Organization Code',  'Short Organization Name', 'Organization Name','Inactive?'];
-    const expectedFields = ['orgCode', 'orgTranslationShort','orgTranslation', 'inactive'];
-    const testId = "OrganizationsTable";
+    const expectedHeaders = ['Code',  'Name', 'Sack Meal?','Takeout Meal?','Dining Cam?','Latitude','Longitude'];
+    const expectedFields = ['code', 'name','hasSackMeal', 'hasTakeOutMeal','hasDiningCam','latitude','longitude'];
+    const testId = "DiningCommonsTable";
 
-    // expectedHeaders.forEach((headerText) => {
-    //   const header = getByText(headerText);
-    //   expect(header).toBeInTheDocument();
-    // });
+    expectedHeaders.forEach((headerText) => {
+      const header = getByText(headerText);
+      expect(header).toBeInTheDocument();
+    });
 
-    // expectedFields.forEach((field) => {
-    //   const header = getByTestId(`${testId}-cell-row-0-col-${field}`);
-    //   expect(header).toBeInTheDocument();
-    // });
+    expectedFields.forEach((field) => {
+      const header = getByTestId(`${testId}-cell-row-0-col-${field}`);
+      expect(header).toBeInTheDocument();
+    });
 
-    // expect(getByTestId(`${testId}-cell-row-0-col-orgCode`)).toHaveTextContent("ZPR");
-    // expect(getByTestId(`${testId}-cell-row-1-col-orgCode`)).toHaveTextContent("OSLI");
-    // expect(getByTestId(`${testId}-cell-row-0-col-orgTranslationShort`)).toHaveTextContent("ZETA PHI RHO");
-    // expect(getByTestId(`${testId}-cell-row-1-col-orgTranslationShort`)).toHaveTextContent("STUDENT LIFE");
+    expect(getByTestId(`${testId}-cell-row-0-col-code`)).toHaveTextContent("de-la-guerra");
+    expect(getByTestId(`${testId}-cell-row-1-col-code`)).toHaveTextContent("ortega");
+    expect(getByTestId(`${testId}-cell-row-0-col-name`)).toHaveTextContent("De La Guerra");
+    expect(getByTestId(`${testId}-cell-row-1-col-name`)).toHaveTextContent("Ortega");
 
     // const editButton = getByTestId(`${testId}-cell-row-0-col-Edit-button`);
     // expect(editButton).toBeInTheDocument();
