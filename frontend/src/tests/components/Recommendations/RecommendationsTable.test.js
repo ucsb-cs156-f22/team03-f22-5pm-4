@@ -42,6 +42,8 @@ describe("RecommendationsTable tests", () => {
     );
   });
 
+});
+
   // test("renders without crashing for empty table for admin", () => {
   //   const currentUser = currentUserFixtures.adminUser;
 
@@ -116,5 +118,3 @@ describe("RecommendationsTable tests", () => {
     // fireEvent.click(editButton);
 
     // await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/recommendations/edit/1'));
-
-  // });
