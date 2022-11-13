@@ -39,7 +39,7 @@ describe("RecommendationsTable tests", () => {
         </MemoryRouter>
       </QueryClientProvider>
 
-    );
+    );  
   });
 
 });
