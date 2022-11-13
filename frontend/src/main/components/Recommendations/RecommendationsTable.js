@@ -1,3 +1,4 @@
+import OurTable from "main/components/OurTable";
 // import { useBackendMutation } from "main/utils/useBackend";
 // import {  onDeleteSuccess } from "main/utils/RecommendationUtils"
 // import { useNavigate } from "react-router-dom";
@@ -5,7 +6,7 @@ import { hasRole } from "main/utils/currentUser";
 
 export function cellToAxiosParamsDelete(cell) {
     return {
-        url: "/api/recommendations",
+        url: "/api/Recommendation",
         method: "DELETE",
         params: {
             code: cell.row.values.code
@@ -25,7 +26,7 @@ export default function RecommendationsTable({ recommendations, currentUser }) {
     // const deleteMutation = useBackendMutation(
     //     cellToAxiosParamsDelete,
     //     { onSuccess: onDeleteSuccess },
-    //     ["/api/recommendations/all"]
+    //     ["/api/Recommendation/all"]
     // );
     // Stryker enable all 
 
@@ -56,17 +57,20 @@ export default function RecommendationsTable({ recommendations, currentUser }) {
         {
             Header: 'Date Needed',
             accessor: 'dateNeeded',
+        },
+        {
+            Header: 'Done',
+            accessor: 'done'
         }
     ];
 
-    // const columnsIfAdmin = [
-    //     ...columns,
-    //     ButtonColumn("Edit", "primary", editCallback, RecommendationsTable),
-    //     ButtonColumn("Delete", "danger", deleteCallback, RecommendationsTable)
-    // ];
+    const columnsIfAdmin = [
+        ...columns,
+        // ButtonColumn("Edit", "primary", editCallback, RecommendationsTable),
+        // ButtonColumn("Delete", "danger", deleteCallback, RecommendationsTable)
+    ];
 
-    // const columnsToDisplay = hasRole(currentUser, "ROLE_ADMIN") ? columnsIfAdmin : columns;
-    const columnsToDisplay = columns;
+    const columnsToDisplay = hasRole(currentUser, "ROLE_ADMIN") ? columnsIfAdmin : columns;
 
     return <OurTable
         data={recommendations}
