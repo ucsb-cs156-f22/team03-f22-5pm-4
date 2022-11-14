@@ -16,7 +16,7 @@ export function cellToAxiosParamsDelete(cell) {
 
 export default function OrganizationsTable({ organizations, currentUser }) {
 
-    const navigate = useNavigate();
+    const _navigate = useNavigate();
 
     // const editCallback = (cell) => {
     //     navigate(`/organizations/edit/${cell.row.values.code}`)
