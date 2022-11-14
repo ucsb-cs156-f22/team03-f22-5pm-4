@@ -14,7 +14,7 @@ const articlesFixtures = {
             "url": "https://www.youtube.com/watch?v=F_U2nxULfQA",
             "explanation": "katy",
             "email": "kperry@gmail.com",
-            "localDateTime": "2022-01-02T12:00:00"
+            "dateAdded": "2022-01-02T12:00:00"
         },
         {
             "id": 3,
@@ -22,7 +22,7 @@ const articlesFixtures = {
             "url": "https://www.youtube.com/watch?v=V0UZd0cccDw",
             "explanation": "Gaga",
             "email": "ladyg@gmail.com",
-            "localDateTime": "2022-04-03T12:00:00"
+            "dateAdded": "2022-04-03T12:00:00"
         },
         {
             "id": 4,
@@ -30,7 +30,7 @@ const articlesFixtures = {
             "url": "https://www.youtube.com/watch?v=rugmvJKkF30",
             "explanation": "sean",
             "email": "spaul@gmail.com",
-            "localDateTime": "2022-07-04T12:00:00"
+            "dateAdded": "2022-07-04T12:00:00"
         }
     ]
 };

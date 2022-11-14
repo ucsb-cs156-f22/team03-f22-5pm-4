@@ -20,9 +20,9 @@ Empty.args = {
     articles: []
 };
 
-export const ThreeDates = Template.bind({});
+export const ThreeArticles = Template.bind({});
 
-ThreeDates.args = {
+ThreeArticles.args = {
     articles: articlesFixtures.threeArticles
 };
 
