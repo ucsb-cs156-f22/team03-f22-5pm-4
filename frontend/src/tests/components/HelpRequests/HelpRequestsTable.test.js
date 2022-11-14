@@ -5,7 +5,6 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import { currentUserFixtures } from "fixtures/currentUserFixtures";
 
-
 const mockedNavigate = jest.fn();
 
 jest.mock('react-router-dom', () => ({
@@ -96,6 +95,8 @@ describe("HelpRequestsTable tests", () => {
     expect(deleteButton).toHaveClass("btn-danger");
 
   });
+
+
 
   // test("Edit button navigates to the edit page for admin user", async () => {
 
