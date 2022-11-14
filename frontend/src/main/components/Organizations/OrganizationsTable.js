@@ -1,8 +1,8 @@
-import OurTable, {ButtonColumn} from "main/components/OurTable";
+import OurTable, {_ButtonColumn} from "main/components/OurTable";
 // import { useBackendMutation } from "main/utils/useBackend";
 // import {  onDeleteSuccess } from "main/utils/UCSBDateUtils"
 // import { useNavigate } from "react-router-dom";
-// import { hasRole } from "main/utils/currentUser";
+import { hasRole } from "main/utils/currentUser";
 
 // export function cellToAxiosParamsDelete(cell) {
 //     return {
@@ -13,7 +13,6 @@ import OurTable, {ButtonColumn} from "main/components/OurTable";
 //         }
 //     }
 // }
-const hold = ButtonColumn;
 
 export default function OrganizationsTable({ organizations, _currentUser }) {
 
@@ -49,30 +48,27 @@ export default function OrganizationsTable({ organizations, _currentUser }) {
         },
         {
             Header: 'Inactive?',
-            id: 'inactive',
+            accessor: 'inactive',
             accessor: (row, _rowIndex) => String(row.inactive)
 
-        },
+        }
     ];
 
     const testid = "OrganizationsTable";
 
-    // const columnsIfAdmin = [
-    //     ...columns,
+    const columnsIfAdmin = [
+        ...columns,
     //     ButtonColumn("Edit", "primary", editCallback, testid),
     //     ButtonColumn("Delete", "danger", deleteCallback, testid)
-    // ];
+    ];
 
-    // const columnsToDisplay = hasRole(currentUser, "ROLE_ADMIN") ? columnsIfAdmin : columns;
+    const columnsToDisplay = hasRole(_currentUser, "ROLE_ADMIN") ? columnsIfAdmin : columns;
 
-    const columnsToDisplay = columns;
+    // const columnsToDisplay = columns;
 
     return <OurTable
         data={organizations}
         columns={columnsToDisplay}
-        testid={"OrgaizationsTable"}
+        testid={"OrganizationsTable"}
     />;
-    const id = testid;
-    hold = id;
-    id = hold;
 };
