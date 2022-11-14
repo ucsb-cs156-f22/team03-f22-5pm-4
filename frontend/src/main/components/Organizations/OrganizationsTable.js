@@ -1,6 +1,6 @@
 import OurTable, {ButtonColumn} from "main/components/OurTable";
 import { useBackendMutation } from "main/utils/useBackend";
-import { onDeleteSuccess } from "main/utils/UCSBDateUtils"
+import { _onDeleteSuccess } from "main/utils/UCSBDateUtils"
 import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
@@ -25,7 +25,7 @@ export default function OrganizationsTable({ organizations, currentUser }) {
     // Stryker disable all : hard to test for query caching
     const deleteMutation = useBackendMutation(
         cellToAxiosParamsDelete,
-        { onSuccess: onDeleteSuccess },
+        { onSuccess: _onDeleteSuccess },
         ["/api/ucsborganizations/all"]
     );
     // Stryker enable all 
