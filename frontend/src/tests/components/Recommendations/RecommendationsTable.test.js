@@ -64,7 +64,7 @@ describe("RecommendationsTable tests", () => {
   //   const { getByText, getByTestId } = render(
   //     <QueryClientProvider client={queryClient}>
   //       <MemoryRouter>
-  //         <RecommendationsTable dates={recommendationsFixtures.threeRecommendations} currentUser={currentUser} />
+  //         <RecommendationsTable recommendations={recommendationsFixtures.threeRecommendations} currentUser={currentUser} />
   //       </MemoryRouter>
   //     </QueryClientProvider>
 

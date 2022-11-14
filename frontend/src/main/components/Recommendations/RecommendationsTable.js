@@ -1,18 +1,19 @@
 import OurTable from "main/components/OurTable";
+// import RecommendationsIndexPage from "main/pages/Recommendations/RecommendationsIndexPage";
 // import { useBackendMutation } from "main/utils/useBackend";
 // import {  onDeleteSuccess } from "main/utils/RecommendationUtils"
 // import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
-export function cellToAxiosParamsDelete(cell) {
-    return {
-        url: "/api/Recommendation",
-        method: "DELETE",
-        params: {
-            code: cell.row.values.code
-        }
-    }
-}
+// export function cellToAxiosParamsDelete(cell) {
+//     return {
+//         url: "/api/Recommendation",
+//         method: "DELETE",
+//         params: {
+//             code: cell.row.values.code
+//         }
+//     }
+// }
 
 export default function RecommendationsTable({ recommendations, currentUser }) {
 
@@ -75,6 +76,6 @@ export default function RecommendationsTable({ recommendations, currentUser }) {
     return <OurTable
         data={recommendations}
         columns={columnsToDisplay}
-        testid={RecommendationsTable}
+        testid={"RecommendationsTable"}
     />;
 };
