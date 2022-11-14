@@ -18,9 +18,9 @@ export default function OrganizationsTable({ organizations, currentUser }) {
 
     const navigate = useNavigate();
 
-    const editCallback = (cell) => {
-        navigate(`/organizations/edit/${cell.row.values.code}`)
-    }
+    // const editCallback = (cell) => {
+    //     navigate(`/organizations/edit/${cell.row.values.code}`)
+    // }
 
     // Stryker disable all : hard to test for query caching
     const deleteMutation = useBackendMutation(
@@ -48,7 +48,7 @@ export default function OrganizationsTable({ organizations, currentUser }) {
         },
         {
             Header: 'Inactive?',
-            accessor: 'inactive',
+            id: 'inactive',
             accessor: (row, _rowIndex) => String(row.inactive)
 
         }

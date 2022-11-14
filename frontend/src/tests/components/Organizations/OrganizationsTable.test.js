@@ -78,10 +78,10 @@ describe("OrganizationsTable tests", () => {
       expect(header).toBeInTheDocument();
     });
 
-    // expectedFields.forEach((field) => {
-    //   const header = getByTestId(`${testId}-cell-row-0-col-${field}`);
-    //   expect(header).toBeInTheDocument();
-    // });
+    expectedFields.forEach((field) => {
+      const header = getByTestId(`${testId}-cell-row-0-col-${field}`);
+      expect(header).toBeInTheDocument();
+    });
 
     expect(getByTestId(`${testId}-cell-row-0-col-orgCode`)).toHaveTextContent("ZPR");
     expect(getByTestId(`${testId}-cell-row-1-col-orgCode`)).toHaveTextContent("OSLI");
@@ -97,10 +97,11 @@ describe("OrganizationsTable tests", () => {
     expect(deleteButton).toHaveClass("btn-danger");
 
   });
+});
 
-  test("Edit button navigates to the edit page for admin user", async () => {
+  // test("Edit button navigates to the edit page for admin user", async () => {
 
-    const currentUser = currentUserFixtures.adminUser;
+  //   const currentUser = currentUserFixtures.adminUser;
 
   //   const { getByTestId } = render(
   //     <QueryClientProvider client={queryClient}>
@@ -122,5 +123,5 @@ describe("OrganizationsTable tests", () => {
 
   // });
   //test
-  });
-})
+  
+// })
