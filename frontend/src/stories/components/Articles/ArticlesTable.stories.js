@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ArticlesTable from "main/components/Articles/ArticlesTable";
+import ArticlesTable from 'main/components/Articles/ArticlesTable';
 import { articlesFixtures } from 'fixtures/articlesFixtures';
 
 export default {
@@ -17,13 +17,13 @@ const Template = (args) => {
 export const Empty = Template.bind({});
 
 Empty.args = {
-    articles: []
+    article: []
 };
 
 export const ThreeArticles = Template.bind({});
 
 ThreeArticles.args = {
-    articles: articlesFixtures.threeArticles
+    article: articlesFixtures.threeArticles
 };
 
 
