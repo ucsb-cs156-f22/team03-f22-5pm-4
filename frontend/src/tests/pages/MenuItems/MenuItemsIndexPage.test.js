@@ -9,7 +9,7 @@ import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 
 
-describe("MenuItemsIndePage tests", () => {
+describe("MenuItemsIndexPage tests", () => {
 
     const axiosMock =new AxiosMockAdapter(axios);
     axiosMock.onGet("/api/currentUser").reply(200, apiCurrentUserFixtures.userOnly);
