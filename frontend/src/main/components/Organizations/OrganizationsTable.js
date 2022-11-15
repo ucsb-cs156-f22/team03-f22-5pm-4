@@ -21,7 +21,7 @@ export default function OrganizationsTable({ organizations, currentUser }) {
     );
     // Stryker enable all 
 
-    // Stryker disable next-line all : TODO try to make a good test for this
+    // Stryker disable next-line all
     const deleteCallback = async (cell) => { deleteMutation.mutate(cell); }
 
     const columns = [
@@ -53,7 +53,7 @@ export default function OrganizationsTable({ organizations, currentUser }) {
         ButtonColumn("Delete", "danger", deleteCallback, testid)
     ];
 
-    const columnsToDisplay = hasRole(currentUser, "ROLE_USER") ? columnsIfAdmin : columns;
+    const columnsToDisplay = hasRole(currentUser, "ROLE_ADMIN") ? columnsIfAdmin : columns;
 
     // const columnsToDisplay = columns;
 
