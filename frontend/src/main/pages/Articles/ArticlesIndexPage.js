@@ -15,6 +15,7 @@ export default function ArticlesIndexPage() {
       ["/api/Article/all"],
             // Stryker disable next-line StringLiteral,ObjectLiteral : since "GET" is default, "" is an equivalent mutation
             { method: "GET", url: "/api/Article/all" },
+      // Stryker disable next-line all
       []
     );
 
