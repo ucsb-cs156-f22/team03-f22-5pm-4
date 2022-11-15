@@ -22,10 +22,10 @@ public class HelpRequest {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
  
-  String requesterEmail;
-  String teamId;
-  String tableOrBreakoutRoom;
-  LocalDateTime requestTime;
-  String explanation;
-  boolean solved;
+  private String requesterEmail;
+  private String teamId;
+  private String tableOrBreakoutRoom;
+  private LocalDateTime requestTime;
+  private String explanation;
+  private boolean solved;
 }

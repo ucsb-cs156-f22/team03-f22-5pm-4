@@ -1,4 +1,4 @@
-import { _fireEvent, render, waitFor } from "@testing-library/react";
+import { fireEvent, render, waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import HelpRequestsIndexPage from "main/pages/HelpRequests/HelpRequestsIndexPage";
@@ -9,7 +9,7 @@ import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import { helpRequestsFixtures } from "fixtures/helpRequestsFixtures";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
-import _mockConsole from "jest-mock-console";
+// import mockConsole from "jest-mock-console";
 
 
 const mockToast = jest.fn();
@@ -145,35 +145,35 @@ describe("HelpRequestsIndexPage tests", () => {
         expect(queryByTestId(`${testId}-cell-row-0-col-teamId`)).not.toBeInTheDocument();
     });
 
-    // test("test what happens when you click delete, admin", async () => {
-    //     setupAdminUser();
+    test("test what happens when you click delete, admin", async () => {
+        setupAdminUser();
 
-    //     const queryClient = new QueryClient();
-    //     axiosMock.onGet("/api/HelpRequest/all").reply(200, helpRequestsFixtures.threeRequests);
-    //     axiosMock.onDelete("/api/HelpRequest", {params: {code: "1"}}).reply(200, "HelpRequest with id 1 was deleted");
+        const queryClient = new QueryClient();
+        axiosMock.onGet("/api/HelpRequest/all").reply(200, helpRequestsFixtures.threeRequests);
+        // axiosMock.onDelete("/api/HelpRequest", {params: {id: 2}}).reply(200, "HelpRequest with id 2 was deleted");
+        axiosMock.onDelete("/api/HelpRequest").reply(200, "HelpRequest with id 2 was deleted");
+
+        const { getByTestId } = render(
+            <QueryClientProvider client={queryClient}>
+                <MemoryRouter>
+                    <HelpRequestsIndexPage />
+                </MemoryRouter>
+            </QueryClientProvider>
+        );
+
+        await waitFor(() => { expect(getByTestId(`${testId}-cell-row-0-col-id`)).toBeInTheDocument(); });
+
+        expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent(2); 
 
 
-    //     const { getByTestId } = render(
-    //         <QueryClientProvider client={queryClient}>
-    //             <MemoryRouter>
-    //                 <HelpRequestsIndexPage />
-    //             </MemoryRouter>
-    //         </QueryClientProvider>
-    //     );
-
-    //     await waitFor(() => { expect(getByTestId(`${testId}-cell-row-0-col-id`)).toBeInTheDocument(); });
-
-    //    expect(getByTestId(`${testId}-cell-row-0-col-teamId`)).toHaveTextContent("s22-5pm-3"); 
-
-
-    //     const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
-    //     expect(deleteButton).toBeInTheDocument();
+        const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
+        expect(deleteButton).toBeInTheDocument();
        
-    //     fireEvent.click(deleteButton);
+        fireEvent.click(deleteButton);
 
-    //     await waitFor(() => { expect(mockToast).toBeCalledWith("Help Request with id 1 was deleted") });
+        await waitFor(() => { expect(mockToast).toBeCalledWith("HelpRequest with id 2 was deleted") });
 
-    // });
+    });
 
     // test("test what happens when you click edit as an admin", async () => {
     //     setupAdminUser();

@@ -2,7 +2,7 @@ import React from 'react';
 
 import HelpRequestsTable from "main/components/HelpRequests/HelpRequestsTable";
 import { helpRequestsFixtures } from 'fixtures/helpRequestsFixtures';
-// import { currentUserFixtures } from 'fixtures/currentUserFixtures';
+import { currentUserFixtures } from 'fixtures/currentUserFixtures';
 
 export default {
     title: 'components/HelpRequests/HelpRequestsTable',
@@ -27,10 +27,10 @@ ThreeRequests.args = {
     helpRequests: helpRequestsFixtures.threeRequests
 };
 
-// export const ThreeRequestsAsAdmin = Template.bind({});
+export const ThreeRequestsAsAdmin = Template.bind({});
 
-// ThreeRequestsAsAdmin.args = {
-//     helpRequests: helpRequestsFixtures.threeRequests,
-//     currentUser: currentUserFixtures.adminUser
-// };
+ThreeRequestsAsAdmin.args = {
+    helpRequests: helpRequestsFixtures.threeRequests,
+    currentUser: currentUserFixtures.adminUser
+};
 
