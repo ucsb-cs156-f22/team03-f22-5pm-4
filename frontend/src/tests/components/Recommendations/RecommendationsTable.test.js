@@ -1,5 +1,5 @@
 import { _fireEvent, render, _waitFor } from "@testing-library/react";
-// import { recommendationsFixtures } from "fixtures/recommendationsFixtures";
+import { recommendationsFixtures } from "fixtures/recommendationsFixtures";
 import RecommendationsTable from "main/components/Recommendations/RecommendationsTable"
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
@@ -44,65 +44,64 @@ describe("RecommendationsTable tests", () => {
 
 });
 
-  // test("renders without crashing for empty table for admin", () => {
-  //   const currentUser = currentUserFixtures.adminUser;
+  test("renders without crashing for empty table for admin", () => {
+    const currentUser = currentUserFixtures.adminUser;
 
-  //   render(
-  //     <QueryClientProvider client={queryClient}>
-  //       <MemoryRouter>
-  //         <RecommendationsTable recommendations={[]} currentUser={currentUser} />
-  //       </MemoryRouter>
-  //     </QueryClientProvider>
+    const queryClient = new QueryClient();
 
-  //   );
-  // });
+    render(
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter>
+          <RecommendationsTable recommendations={[]} currentUser={currentUser} />
+        </MemoryRouter>
+      </QueryClientProvider>
 
-  // test("Has the expected colum headers and content for adminUser", () => {
+    ); 
+  });
+ 
+  test("Has the expected colum headers and content for adminUser", () => {
 
-  //   const currentUser = currentUserFixtures.adminUser;
+    const currentUser = currentUserFixtures.adminUser;
 
-  //   const { getByText, getByTestId } = render(
-  //     <QueryClientProvider client={queryClient}>
-  //       <MemoryRouter>
-  //         <RecommendationsTable recommendations={recommendationsFixtures.threeRecommendations} currentUser={currentUser} />
-  //       </MemoryRouter>
-  //     </QueryClientProvider>
+    const queryClient = new QueryClient(); 
 
-  //   );
+    const { getByText, getByTestId } = render(
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter>
+          <RecommendationsTable recommendations={recommendationsFixtures.threeRecommendations} currentUser={currentUser} />
+        </MemoryRouter>
+      </QueryClientProvider>
 
-  //   const expectedHeaders = ["id", "Requester Email", "Professor Email", "Explanation", "Date Requested", "Date Needed", "Done"];
-  //   const expectedFields = ["id", "requesterEmail", "professorEmail", "explanation", "dateRequested", "dateNeeded", "done"];
-  //   const testId = "RecommendationsTable";
+    );
 
-  //   expectedHeaders.forEach((headerText) => {
-  //     const header = getByText(headerText);
-  //     expect(header).toBeInTheDocument();
-  //   });
+    const expectedHeaders = ["id", "Requester Email", "Professor Email", "Explanation", "Date Requested", "Date Needed", "Done"];
+    const expectedFields = ["id", "requesterEmail", "professorEmail", "explanation", "dateRequested", "dateNeeded", "done"];
+    const testId = "RecommendationsTable";
 
-  //   expectedFields.forEach((field) => {
-  //     const header = getByTestId(`${testId}-cell-row-0-col-${field}`);
-  //     expect(header).toBeInTheDocument();
-  //   });
+    expectedHeaders.forEach((headerText) => {
+      const header = getByText(headerText);
+      expect(header).toBeInTheDocument();
+    });
 
-  //   expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1");
-  //   expect(getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent("2");
+    expectedFields.forEach((field) => {
+      const header = getByTestId(`${testId}-cell-row-0-col-${field}`);
+      expect(header).toBeInTheDocument();
+    });
 
-    // const editButton = getByTestId(`${testId}-cell-row-0-col-Edit-button`);
-    // expect(editButton).toBeInTheDocument();
-    // expect(editButton).toHaveClass("btn-primary");
+    expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1");
 
-    // const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
-    // expect(deleteButton).toBeInTheDocument();
-    // expect(deleteButton).toHaveClass("btn-danger");
+    const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
+    expect(deleteButton).toBeInTheDocument();
+    expect(deleteButton).toHaveClass("btn-danger");
 
-  // });
+  });
 
   // test("Edit button navigates to the edit page for admin user", async () => {
 
   //   const currentUser = currentUserFixtures.adminUser;
 
   //   const { getByTestId } = render(
-  //     <QueryClientProvider client={queryClient}>
+  //     <QueryClientProvider client={QueryClient}>
   //       <MemoryRouter>
   //         <RecommendationsTable recommendations={recommendationsFixtures.threeRecommendations} currentUser={currentUser} />
   //       </MemoryRouter>
@@ -110,11 +109,14 @@ describe("RecommendationsTable tests", () => {
 
   //   );
 
-    // await waitFor(() => { expect(getByTestId(`RecommendationsTable-cell-row-0-col-id`)).toHaveTextContent("1"); });
+  //   await waitFor(() => { expect(getByTestId(`RecommendationsTable-cell-row-0-col-id`)).toHaveTextContent("1"); });
 
-    // const editButton = getByTestId(`RecommendationsTable-cell-row-0-col-Edit-button`);
-    // expect(editButton).toBeInTheDocument();
+  //   const editButton = getByTestId(`RecommendationsTable-cell-row-0-col-Edit-button`);
+  //   expect(editButton).toBeInTheDocument();
     
-    // fireEvent.click(editButton);
+  //   fireEvent.click(editButton);
 
-    // await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/recommendations/edit/1'));
+  //   await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/recommendations/edit/1'));
+  
+  // });
+ 

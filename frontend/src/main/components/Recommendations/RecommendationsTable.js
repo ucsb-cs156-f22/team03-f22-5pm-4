@@ -1,19 +1,8 @@
-import OurTable from "main/components/OurTable";
-// import RecommendationsIndexPage from "main/pages/Recommendations/RecommendationsIndexPage";
-// import { useBackendMutation } from "main/utils/useBackend";
-// import {  onDeleteSuccess } from "main/utils/RecommendationUtils"
-// import { useNavigate } from "react-router-dom";
+import OurTable, { ButtonColumn } from "main/components/OurTable";
+import { useBackendMutation } from "main/utils/useBackend";
+import { cellToAxiosParamsDelete, onDeleteSuccess } from "main/utils/RecommendationUtils"
+import { _useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
-
-// export function cellToAxiosParamsDelete(cell) {
-//     return {
-//         url: "/api/Recommendation",
-//         method: "DELETE",
-//         params: {
-//             code: cell.row.values.code
-//         }
-//     }
-// }
 
 export default function RecommendationsTable({ recommendations, currentUser }) {
 
@@ -24,15 +13,15 @@ export default function RecommendationsTable({ recommendations, currentUser }) {
     // }
 
     // Stryker disable all : hard to test for query caching
-    // const deleteMutation = useBackendMutation(
-    //     cellToAxiosParamsDelete,
-    //     { onSuccess: onDeleteSuccess },
-    //     ["/api/Recommendation/all"]
-    // );
+    const deleteMutation = useBackendMutation(
+        cellToAxiosParamsDelete,
+        { onSuccess: onDeleteSuccess },
+        ["/api/Recommendation/all"]
+    );
     // Stryker enable all 
 
     // Stryker disable next-line all : TODO try to make a good test for this
-    // const deleteCallback = async (cell) => { deleteMutation.mutate(cell); }
+    const deleteCallback = async (cell) => { deleteMutation.mutate(cell); }
 
     const columns = [
         {
@@ -61,14 +50,15 @@ export default function RecommendationsTable({ recommendations, currentUser }) {
         },
         {
             Header: 'Done',
-            accessor: 'done'
-        }
+            id: 'done',
+            accessor: (row, _rowIndex) => String(row.isDone)
+        } 
     ];
 
     const columnsIfAdmin = [
         ...columns,
         // ButtonColumn("Edit", "primary", editCallback, RecommendationsTable),
-        // ButtonColumn("Delete", "danger", deleteCallback, RecommendationsTable)
+        ButtonColumn("Delete", "danger", deleteCallback, RecommendationsTable)
     ];
 
     const columnsToDisplay = hasRole(currentUser, "ROLE_ADMIN") ? columnsIfAdmin : columns;
