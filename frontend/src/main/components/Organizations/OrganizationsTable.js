@@ -7,7 +7,7 @@ import { hasRole } from "main/utils/currentUser";
 
 export default function OrganizationsTable({ organizations, currentUser }) {
 
-    const navigate = useNavigate();
+    const _navigate = useNavigate();
 
     // const editCallback = (cell) => {
     //     navigate(`/organizations/edit/${cell.row.values.code}`)
