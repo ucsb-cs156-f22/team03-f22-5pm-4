@@ -4,7 +4,7 @@ import OurTable, { ButtonColumn} from "main/components/OurTable";
  import { useNavigate } from "react-router-dom";
  import { hasRole } from "main/utils/currentUser";
 
-export default function MenuItemsTable({ menuItems, currentUser }) {
+export default function MenuItemsTable({ commonsMenuItems, currentUser }) {
 
     const navigate = useNavigate();
 
@@ -24,14 +24,13 @@ export default function MenuItemsTable({ menuItems, currentUser }) {
     const deleteCallback = async (cell) => { deleteMutation.mutate(cell); }
 
     const columns = [
-       
-        {
-            Header: 'Dining Commons Code',
-            accessor: 'diningCommonsCode', 
-        },
         {
             Header: 'ID',
             accessor: 'id',
+        },
+        {
+            Header: 'Dining Commons Code',
+            accessor: 'diningCommonsCode', 
         },
         {
             Header: 'Name',
@@ -43,10 +42,12 @@ export default function MenuItemsTable({ menuItems, currentUser }) {
         }
     ];
 
+    const testid = "MenuItemsTable"
+
      const columnsIfAdmin = [
         ...columns,
-         ButtonColumn("Edit", "primary", editCallback, "MenuItemsTable"),
-         ButtonColumn("Delete", "danger", deleteCallback, "MenuItemsTable")
+         ButtonColumn("Edit", "primary", editCallback, testid),
+         ButtonColumn("Delete", "danger", deleteCallback, testid)
      ];
     
     const columnsToDisplay = hasRole(currentUser, "ROLE_ADMIN") ? columnsIfAdmin : columns;
@@ -54,8 +55,8 @@ export default function MenuItemsTable({ menuItems, currentUser }) {
     //const columnsToDisplay = columns;
 
     return <OurTable
-        data={menuItems}
+        data={commonsMenuItems}
         columns={columnsToDisplay}
-        testid={"MenuItemsTable"}
+        testid={testid}
     />;
 };

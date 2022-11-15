@@ -1,6 +1,6 @@
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
 import { useParams } from "react-router-dom";
-import MenuItemForm from "main/components/MenuItems/MenuItemForm";
+import MenuItemForm from "main/components/MenuItems/MenuItemsForm";
 import { Navigate } from 'react-router-dom'
 import { useBackend, useBackendMutation } from "main/utils/useBackend";
 import { toast } from "react-toastify";
@@ -8,8 +8,7 @@ import { toast } from "react-toastify";
 export default function MenuItemEditPage() {
   let { id } = useParams();
 
-  //
-  const { data: menuItem, _error, _status } =
+  const { data: commonsMenuItem, _error, _status } =
     useBackend(
       // Stryker disable next-line all : don't test internal caching of React Query
       [`/api/UCSBDiningCommonsMenuItem?id=${id}`],
@@ -23,21 +22,21 @@ export default function MenuItemEditPage() {
     );
 
 
-  const objectToAxiosPutParams = (menuItem) => ({
+  const objectToAxiosPutParams = (commonsMenuItem) => ({
     url: "/api/UCSBDiningCommonsMenuItem",
     method: "PUT",
     params: {
-      id: menuItem.id,
+      id: commonsMenuItem.id,
     },
     data: {
-      diningCommonsCode: menuItem.diningCommonsCode,
-      name: menuItem.name,
-      station: menuItem.station,
+      diningCommonsCode: commonsMenuItem.diningCommonsCode,
+      name: commonsMenuItem.name,
+      station: commonsMenuItem.station,
     }
   });
 
-  const onSuccess = (menuItem) => {
-    toast(`DiningCommonsMenuItem Updated - id: ${menuItem.id} name: ${menuItem.name}`);
+  const onSuccess = (commonsMenuItem) => {
+    toast(`DiningCommonsMenuItem Updated - id: ${commonsMenuItem.id} name: ${commonsMenuItem.name}`);
   }
 
   const mutation = useBackendMutation(
@@ -60,9 +59,9 @@ export default function MenuItemEditPage() {
   return (
     <BasicLayout>
       <div className="pt-2">
-        <h1>Edit Menu Item</h1>
-        {menuItem &&
-          <MenuItemForm initialMenuItem={menuItem} submitAction={onSubmit} buttonLabel="Update" />
+        <h1>Edit Dining Commons Menu Item</h1>
+        {commonsMenuItem &&
+          <MenuItemForm initialCommonsMenuItem={commonsMenuItem} submitAction={onSubmit} buttonLabel="Update" />
         }
       </div>
     </BasicLayout>

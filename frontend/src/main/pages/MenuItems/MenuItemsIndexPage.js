@@ -12,9 +12,9 @@ export default function MenuItemsIndexPage() {
   const { data: menuItems, error: _error, status: _status } =
     useBackend(
       // Stryker disable next-line all : don't test internal caching of React Query
-      ["​/api​/UCSBDiningCommonsMenuItem​/all"],
+      ["/api/menutitems/all"],
             // Stryker disable next-line StringLiteral,ObjectLiteral : since "GET" is default, "" is an equivalent mutation
-            { method: "GET", url: "​/api​/UCSBDiningCommonsMenuItem​/all" },
+            { method: "GET", url: "/api/menuitems/all" },
       []
     );
 
@@ -23,7 +23,7 @@ export default function MenuItemsIndexPage() {
     <BasicLayout>
       <div className="pt-2">
         <h1>Menu Items</h1>
-        { <MenuItemsTable menuItems={menuItems} currentUser={currentUser} /> }
+        <MenuItemsTable menuItems={menuItems} currentUser={currentUser} />
       </div>
     </BasicLayout>
   )

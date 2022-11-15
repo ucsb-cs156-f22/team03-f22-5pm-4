@@ -1,7 +1,7 @@
 import React from 'react';
 
 import MenuItemTable from "main/components/MenuItems/MenuItemTable";
-import { MenuItemFixtures } from 'fixtures/menuItemFixtures';
+import { menuItemFixtures } from 'fixtures/menuItemFixtures';
 import { currentUserFixtures } from 'fixtures/currentUserFixtures';
 
 export default {
@@ -21,15 +21,15 @@ Empty.args = {
     menuItem: []
 };
 
-export const ThreeDates = Template.bind({});
+export const threeMenuItem = Template.bind({});
 
 ThreeDates.args = {
     menuItem: menuItemFixtures.threeMenuItem
 };
 
-export const ThreeDatesAsAdmin = Template.bind({});
+export const ThreeMenuItemAsAdmin = Template.bind({});
 
-ThreeDatesAsAdmin.args = {
+ThreeMenuItemsAsAdmin.args = {
     menuItem: menuItemFixtures.threeMenuItem,
     currentUser: currentUserFixtures.adminUser
 };
