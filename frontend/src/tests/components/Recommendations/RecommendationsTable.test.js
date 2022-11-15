@@ -88,6 +88,8 @@ describe("RecommendationsTable tests", () => {
       expect(header).toBeInTheDocument();
     });
 
+    
+
     expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1");
 
     const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);

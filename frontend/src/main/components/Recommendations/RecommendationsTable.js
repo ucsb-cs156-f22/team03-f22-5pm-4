@@ -50,15 +50,16 @@ export default function RecommendationsTable({ recommendations, currentUser }) {
         },
         {
             Header: 'Done',
-            id: 'done',
-            accessor: (row, _rowIndex) => String(row.isDone)
+            id: 'done'
         } 
     ];
 
+    const testid = "RecommendationsTable";
+
     const columnsIfAdmin = [
         ...columns,
-        // ButtonColumn("Edit", "primary", editCallback, RecommendationsTable),
-        ButtonColumn("Delete", "danger", deleteCallback, RecommendationsTable)
+        // ButtonColumn("Edit", "primary", editCallback, testid),
+        ButtonColumn("Delete", "danger", deleteCallback, testid)
     ];
 
     const columnsToDisplay = hasRole(currentUser, "ROLE_ADMIN") ? columnsIfAdmin : columns;
@@ -66,6 +67,6 @@ export default function RecommendationsTable({ recommendations, currentUser }) {
     return <OurTable
         data={recommendations}
         columns={columnsToDisplay}
-        testid={"RecommendationsTable"}
+        testid={testid}
     />;
 };
