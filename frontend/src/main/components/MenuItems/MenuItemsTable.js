@@ -1,16 +1,16 @@
 import OurTable, { ButtonColumn} from "main/components/OurTable";
  import { useBackendMutation } from "main/utils/useBackend";
  import { cellToAxiosParamsDelete, onDeleteSuccess } from "main/utils/MenuItemUtils"
- import { useNavigate } from "react-router-dom";
+ import { _useNavigate } from "react-router-dom";
  import { hasRole } from "main/utils/currentUser";
 
-export default function MenuItemsTable({ commonsMenuItems, currentUser }) {
+export default function MenuItemsTable({ menuItems, currentUser }) {
 
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
 
-    const editCallback = (cell) => {
-        navigate(`/UCSBDiningCommonsMenuItem/edit/${cell.row.values.id}`)
-    }
+    // const editCallback = (cell) => {
+    //     navigate(`/UCSBDiningCommonsMenuItem/edit/${cell.row.values.id}`)
+    // }
 
     // Stryker disable all : hard to test for query caching
     const deleteMutation = useBackendMutation(
@@ -46,7 +46,7 @@ export default function MenuItemsTable({ commonsMenuItems, currentUser }) {
 
      const columnsIfAdmin = [
         ...columns,
-         ButtonColumn("Edit", "primary", editCallback, testid),
+         //ButtonColumn("Edit", "primary", editCallback, testid),
          ButtonColumn("Delete", "danger", deleteCallback, testid)
      ];
     
@@ -55,7 +55,7 @@ export default function MenuItemsTable({ commonsMenuItems, currentUser }) {
     //const columnsToDisplay = columns;
 
     return <OurTable
-        data={commonsMenuItems}
+        data={menuItems}
         columns={columnsToDisplay}
         testid={testid}
     />;

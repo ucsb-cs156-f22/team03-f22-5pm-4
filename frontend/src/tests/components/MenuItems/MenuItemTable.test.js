@@ -1,6 +1,6 @@
 import { fireEvent, render, waitFor } from "@testing-library/react";
-import { diningCommonsMenuItemFixtures } from "fixtures/diningCommonsMenuItemFixtures";
-import DiningCommonsMenuItemTable from "main/components/DiningCommonsMenuItem/DiningCommonsMenuItemTable"
+import { menuItemFixtures } from "fixtures/menuItemFixtures";
+import MenuItemTable from "main/components/MenuItems/MenuItemsTable"
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import { currentUserFixtures } from "fixtures/currentUserFixtures";
@@ -74,7 +74,7 @@ describe("MenuItemTable tests", () => {
     const { getByText, getByTestId } = render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <MenuItemTable MenuItem={MenuItemFixtures.threeMenuItem} currentUser={currentUser} />
+          <MenuItemTable MenuItem={menuItemFixtures.threeMenuItem} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 
@@ -113,7 +113,7 @@ describe("MenuItemTable tests", () => {
     const { getByTestId } = render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <MenuItemTable MenuItem={MenuItemFixtures.threeMenuItem} currentUser={currentUser} />
+          <MenuItemTable MenuItem={menuItemFixtures.threeMenuItem} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 
