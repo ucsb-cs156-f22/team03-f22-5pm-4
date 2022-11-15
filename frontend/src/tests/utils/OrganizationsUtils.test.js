@@ -36,7 +36,7 @@ describe("OrganizationsUtils", () => {
 
         test("It returns the correct params", () => {
             // arrange
-            const cell = { row: { values: { id: 17 } } };
+            const cell = { row: { values: { orgCode: undefined } } };
 
             // act
             const result = cellToAxiosParamsDelete(cell);
@@ -45,7 +45,7 @@ describe("OrganizationsUtils", () => {
             expect(result).toEqual({
                 url: "/api/ucsborganizations",
                 method: "DELETE",
-                params: { id: 17 }
+                params: { orgCode: undefined }
             });
         });
 
