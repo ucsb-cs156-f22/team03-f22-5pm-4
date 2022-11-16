@@ -16,6 +16,7 @@ describe("MenuItemsEditPage tests", () => {
     axiosMock.onGet("/api/systemInfo").reply(200, systemInfoFixtures.showingNeither);
 
     const queryClient = new QueryClient();
+    
     test("renders without crashing", () => {
         render(
             <QueryClientProvider client={queryClient}>
