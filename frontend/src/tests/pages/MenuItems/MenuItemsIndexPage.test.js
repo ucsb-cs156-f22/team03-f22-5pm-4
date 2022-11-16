@@ -31,11 +31,11 @@ jest.mock('react-router-dom', () => ({
     useNavigate: () => mockedNavigate
 }));
 
-describe("UCSBDiningCommonsMenuItem tests", () => {
+describe("MenuItem tests", () => {
 
     const axiosMock = new AxiosMockAdapter(axios);
 
-    const testId = "MenuItemTable";
+    const testId = "MenuItemsTable";
 
     const setupUserOnly = () => {
         axiosMock.reset();
@@ -59,7 +59,7 @@ describe("UCSBDiningCommonsMenuItem tests", () => {
         render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
-                    <DiningCommonsMenuItemsIndexPage />
+                    <MenuItemsIndexPage />
                 </MemoryRouter>
             </QueryClientProvider>
         );
@@ -75,7 +75,7 @@ describe("UCSBDiningCommonsMenuItem tests", () => {
         render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
-                    <DiningCommonsMenuItemsIndexPage />
+                    <MenuItemsIndexPage/>
                 </MemoryRouter>
             </QueryClientProvider>
         );
@@ -86,7 +86,7 @@ describe("UCSBDiningCommonsMenuItem tests", () => {
     test("renders three diningCommonMenuItem without crashing for regular user", async () => {
         setupUserOnly();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/UCSBDiningCommonsMenuItem/all").reply(200, menuItemFixtures.threeMenuItem);
+        axiosMock.onGet("/api/UCSBDiningCommonsMenuItem/all").reply(200, menuItemFixtures.threeMenuItems);
         const { getByTestId } = render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
@@ -95,16 +95,16 @@ describe("UCSBDiningCommonsMenuItem tests", () => {
             </QueryClientProvider>
         );
 
-        await waitFor(  () => { expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent(1); } );
-        expect(getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent(2);
-        expect(getByTestId(`${testId}-cell-row-2-col-id`)).toHaveTextContent(3);
+        await waitFor(  () => { expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1"); } );
+        expect(getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent("2");
+        expect(getByTestId(`${testId}-cell-row-2-col-id`)).toHaveTextContent("3");
 
     });
 
     test("renders three diningCommonsMenuItem without crashing for admin user", async () => {
         setupAdminUser();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/UCSBDiningCommonsMenuItem/all").reply(200, menuItemFixtures.threeMenuItem);
+        axiosMock.onGet("/api/UCSBDiningCommonsMenuItem/all").reply(200, menuItemFixtures.threeMenuItems);
 
         const { getByTestId } = render(
             <QueryClientProvider client={queryClient}>
@@ -143,7 +143,7 @@ describe("UCSBDiningCommonsMenuItem tests", () => {
 
         await waitFor(() => { expect(axiosMock.history.get.length).toBeGreaterThanOrEqual(3); });
 
-        const expectedHeaders = ['ID',  'Dining Commons Code', 'Dish','Station'];
+        const expectedHeaders = ['ID', 'Dining Commons Code', 'Name','Station'];
         expectedHeaders.forEach((headerText) => {
           const header = getByText(headerText);
           expect(header).toBeInTheDocument();
@@ -158,7 +158,7 @@ describe("UCSBDiningCommonsMenuItem tests", () => {
         setupAdminUser();
 
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/UCSBDiningCommonsMenuItem/all").reply(200, menuItemFixtures.threeMenuItem);
+        axiosMock.onGet("/api/UCSBDiningCommonsMenuItem/all").reply(200, menuItemFixtures.threeMenuItems);
         axiosMock.onDelete("/api/UCSBDiningCommonsMenuItem", {params: {id: 1}}).reply(200, "DiningCommonsMenuItem with id 1 deleted");
 
 

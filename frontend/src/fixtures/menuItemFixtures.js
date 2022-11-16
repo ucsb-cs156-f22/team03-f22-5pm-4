@@ -1,11 +1,11 @@
 const menuItemFixtures = {
-    oneMenuItem: {
+    oneMenuItems: {
         "id": 1,
         "diningCommonsCode": "ortega",
         "name": "Baked Pesto Pasta with Chicken",
         "station": "Entree Specials",
     },
-    threeMenuItem: [
+    threeMenuItems: [
         {
         "id": 1,
         "diningCommonsCode": "ortega",
