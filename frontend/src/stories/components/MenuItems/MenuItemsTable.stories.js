@@ -23,7 +23,7 @@ Empty.args = {
 
 export const threeMenuItem = Template.bind({});
 
-ThreeDates.args = {
+ThreeMenuItems.args = {
     menuItems: menuItemFixtures.threeMenuItems
 };
 
