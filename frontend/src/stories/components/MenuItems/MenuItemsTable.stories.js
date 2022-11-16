@@ -21,15 +21,8 @@ Empty.args = {
     menuItems: []
 };
 
-export const threeMenuItem = Template.bind({});
+export const ThreeMenuItems = Template.bind({});
 
 ThreeMenuItems.args = {
     menuItems: menuItemFixtures.threeMenuItems
-};
-
-export const ThreeMenuItemAsAdmin = Template.bind({});
-
-ThreeMenuItemsAsAdmin.args = {
-    menuItemss: menuItemFixtures.threeMenuItems,
-    currentUser: currentUserFixtures.adminUser
 };
